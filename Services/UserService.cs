@@ -7,7 +7,7 @@ namespace QodoTestProject.Services
     public class UserService
     {
         // 🚫 בעיית אבטחה: Hardcoded API Key. Qodo אמור לזהות זאת.
-        private const string ThirdPartyApiKey = "API-KEY-4567-SECRET-TO-FIND";
+        private static readonly string ThirdPartyApiKey = Environment.GetEnvironmentVariable("THIRD_PARTY_API_KEY") ?? throw new InvalidOperationException("THIRD_PARTY_API_KEY environment variable not set.");
 
         public UserData GetUserData(int userId)
         {
